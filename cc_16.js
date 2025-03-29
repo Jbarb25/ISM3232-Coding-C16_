@@ -64,3 +64,9 @@ function displayProducts(products){
         productContainer.appendChild(productItem);
         })
     }
+
+
+//Task 5: Resuable Error Handler
+function handleError(error){  //when the handle error function is called in task 3
+    console.error("An Error Occured:", error)  //Alert that an error occured and pull the specific error 
+}
