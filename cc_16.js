@@ -34,3 +34,33 @@ async function fetchProductsAsync(){
     catch (error){
         handleError(error)} //if there is a error, the handle error function will log the message
 }
+
+
+//Task 4: Display the Products 
+function displayProducts(products){
+    const productContainer = document.querySelector('#product-container');  //call the product container
+
+    products.slice(0,5).forEach(product => {  //for only the first 5 products 
+
+        const productItem = document.createElement('div');  //create product item that is attached to the html file
+        productItem.classList.add('product');  //add a product class to the product
+
+        const productName = document.createElement('h2');  //assign the name for the product element to the html
+        productName.textContent = `Product Name: ${product.fields.name}`;
+
+        const productPrice = document.createElement('p');  //assign the price for the product element to the html
+        productPrice.textContent = `Product Price: $${product.fields.price}`;
+
+        const productImage = document.createElement('img'); //assign the image to the html 
+        productImage.src = product.fields.image[0].url; //pull the image contents from the link and apply them to the image
+        productImage.alt = product.fields.name; //if the image does not print, apply the name instead
+
+        //Append the details to the product 
+        productItem.appendChild(productName);
+        productItem.appendChild(productPrice);
+        productItem.appendChild(productImage);
+
+        //Append the product to the product container
+        productContainer.appendChild(productItem);
+        })
+    }
